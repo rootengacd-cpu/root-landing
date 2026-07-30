@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Industrial Automation with Root Engineering Academy's comprehensive PLC & HMI course. Delta PLC, HMI design, Ladder Logic, and real-world industrial projects.">
+    <meta name="keywords" content="Root Engineering Academy, PLC Programming, HMI Development, Industrial Automation, Delta PLC, Ladder Logic, SCADA, Modbus, WPLSoft, DOPSoft">
+    <meta name="author" content="Root Engineering Academy">
+    <meta property="og:title" content="Industrial Automation PLC & HMI Master Course | Root Engineering Academy">
+    <meta property="og:description" content="Become Industry Ready with Practical Training in PLC & HMI Programming at Root Engineering Academy">
+    <meta property="og:image" content="images/hero-banner.jpg">
+    <meta property="og:type" content="website">
+    <title>Industrial Automation PLC &amp; HMI Master Course | Root Engineering Academy</title>
+
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css?v=2.2">
+</head>
+<body>
+
+    <!-- ========== STICKY ENROLLMENT NOTIFICATION BAR ========== -->
+    <div class="top-bar-wrapper">
+        <div class="top-bar" id="stickyTopBar">
+            <div class="container top-bar-content">
+                <div class="top-bar-left">
+                    <span class="limited-seats-text"><span class="pulse-fire">🔥</span> Limited Seats Available</span>
+                    <span class="bar-divider">|</span>
+                    <span class="deadline-text">⏳ Offer Ends: 1 August 2026, 3:00 PM IST</span>
+                </div>
+                <div class="top-bar-center" id="topTimer">
+                    <span class="timer-title" id="timerLabel">Ends In:</span>
+                    <div class="timer-boxes" id="timerBoxes">
+                        <div class="timer-unit"><span class="timer-box" id="timerDays">00</span><span class="unit-label">d</span></div>:
+                        <div class="timer-unit"><span class="timer-box" id="timerHours">00</span><span class="unit-label">h</span></div>:
+                        <div class="timer-unit"><span class="timer-box" id="timerMins">00</span><span class="unit-label">m</span></div>:
+                        <div class="timer-unit"><span class="timer-box" id="timerSecs">00</span><span class="unit-label">s</span></div>
+                    </div>
+                    <span class="timer-closed-text" id="timerClosedText" style="display: none;">⛔ Offer Expired</span>
+                </div>
+                <div class="top-bar-right">
+                    <a href="#payment" class="top-bar-cta btn-top-enroll"><span>Enroll Now</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== LOADING SCREEN ========== -->
+    <div id="loader" class="loader" aria-label="Loading">
+        <div class="loader-content">
+            <div class="loader-circuit">
+                <picture>
+                    <source srcset="images/root-logo.webp" type="image/webp">
+                    <img src="images/root-logo.png" alt="Root Engineering Academy" class="loader-logo-img">
+                </picture>
+            </div>
+            <p class="loader-text">Initializing PLC System<span class="loader-dots">...</span></p>
+            <span class="loader-status">Root Engineering Academy PLC Portal</span>
+        </div>
+    </div>
+
+    <!-- ========== NAVIGATION ========== -->
+    <header id="navbar" class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container navbar-inner">
+            <a href="#home" class="logo brand-logo-wrap" aria-label="Root Engineering Academy Home">
+                <picture>
+                    <source srcset="images/root-logo.webp" type="image/webp">
+                    <img src="images/root-logo.png" alt="Root Engineering Academy Logo" class="brand-logo-img">
+                </picture>
+            </a>
+
+            <nav class="nav-menu" id="navMenu" role="menubar">
+                <a href="#home" class="nav-link active" role="menuitem">Home</a>
+                <a href="#course" class="nav-link" role="menuitem">About Us</a>
+                <a href="#syllabus" class="nav-link" role="menuitem">Courses</a>
+                <a href="#certificate" class="nav-link" role="menuitem">Certificate</a>
+                <a href="#faq" class="nav-link" role="menuitem">FAQs</a>
+                <a href="#contact" class="nav-link" role="menuitem">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#payment" class="btn btn-primary nav-enroll-btn">
+                    <span>Enroll Now</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </a>
+                <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section id="home" class="hero">
+        <canvas id="heroCanvas" class="hero-canvas"></canvas>
+        <div class="hero-bg-glow"></div>
+        <div class="container hero-container">
+            <div class="hero-left">
+                <div class="hero-badge reveal">
+                    <span class="badge-pulsing-dot"></span>
+                    <span>Root Engineering Academy • Admissions Open 2026 - 2027</span>
+                </div>
+                <h1 class="hero-title reveal">
+                    Industrial Automation<br>
+                    <span class="gradient-text">PLC &amp; HMI</span> Masterclass
+                </h1>
+                <p class="hero-subtitle reveal">
+                    Master practical industrial control systems with Root Engineering Academy. Learn Delta PLC ladder logic, DOPSoft HMI screen design, and control panel wiring.
+                </p>
+                <ul class="hero-highlights reveal">
+                    <li><div class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div> Delta DVP &amp; WPLSoft</li>
+                    <li><div class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div> HMI DOPSoft Touchpanel Design</li>
+                </ul>
+                <div class="hero-buttons reveal">
+                    <a href="#payment" class="btn btn-primary btn-lg glow-btn">
+                        <span>Enroll Now — ₹199</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                    <a href="#simulator" class="btn btn-glass btn-lg">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        <span>Try Live Simulator</span>
+                    </a>
+                </div>
+                <div class="hero-next-batch-card reveal">
+                    <div class="next-batch-header">
+                        <span class="next-batch-icon">🚀</span>
+                        <div class="next-batch-title-group">
+                            <span class="next-batch-tag">Next Live Batch Starts</span>
+                            <span class="next-batch-date">2nd August 2026 (Sunday)</span>
+                        </div>
+                    </div>
+                    <div class="next-batch-meta">
+                        <div class="meta-item-timing">
+                            <span class="meta-icon">🕒</span>
+                            <span>10:00 AM – 1:00 PM (IST)</span>
+                        </div>
+                        <div class="meta-item-mode">
+                            <span class="meta-icon">🎥</span>
+                            <span>Live Online Class</span>
+                        </div>
+                    </div>
+                    <div class="next-batch-urgency">
+                        <span class="urgency-bullet">⚡</span>
+                        <span>Limited Seats Available | Register Before the Batch Starts</span>
+                    </div>
+                </div>
+                <div class="hero-urgency-badge reveal" id="heroUrgencyBadge">
+                    ⚡ <strong>Offer Ends:</strong> 1st August 2026, 3:00 PM IST <span class="limited-seats-chip">🔥 LIMITED SEATS</span>
+                </div>
+            </div>
+
+            <div class="hero-right reveal">
+                <!-- HERO INTERACTIVE PLC & HMI SIMULATOR PREVIEW -->
+                <div class="hero-card-frame">
+                    <div class="glass-card hero-sim-card">
+                        <div class="sim-card-header">
+                            <div class="sim-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="sim-title"><span class="live-dot"></span> LIVE PLC &amp; HMI SIMULATOR</div>
+                            <span class="sim-status" id="simModeStatus">SYSTEM READY</span>
+                        </div>
+                        <div class="sim-hmi-screen">
+                            <div class="hmi-top-bar">
+                                <span class="hmi-title">ROOT AUTOMATION CONTROL PANEL</span>
+                                <span class="hmi-time" id="hmiTime">10:45:22 AM</span>
+                            </div>
+                            <div class="hmi-grid">
+                                <div class="hmi-gauge-box">
+                                    <span class="gauge-label">TANK LEVEL</span>
+                                    <div class="tank-visual">
+                                        <div class="tank-fill" id="tankFill" style="height: 65%;"></div>
+                                        <span class="tank-value" id="tankVal">65%</span>
+                                    </div>
+                                </div>
+                                <div class="hmi-controls-box">
+                                    <div class="hmi-stat-row">
+                                        <span>MOTOR RPM:</span>
+                                        <strong id="motorRpmText">1450 RPM</strong>
+                                    </div>
+                                    <div class="hmi-stat-row">
+                                        <span>SYSTEM TEMP:</span>
+                                        <strong id="sysTempText">42.5 °C</strong>
+                                    </div>
+                                    <div class="hmi-btn-group">
+                                        <button class="hmi-btn start" id="hmiStartBtn">START MOTOR (X0)</button>
+                                        <button class="hmi-btn stop" id="hmiStopBtn">STOP (X1)</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hmi-rung-preview">
+                                <span class="rung-label">LADDER RUNG 001 [MOTOR LATCH]</span>
+                                <div class="ladder-rung">
+                                    <div class="contact" id="contactX0" title="X0 START">[ X0 ]</div>
+                                    <div class="contact nc" id="contactX1" title="X1 STOP">[ / X1 ]</div>
+                                    <div class="wire-line" id="wireLine"></div>
+                                    <div class="coil" id="coilY0" title="Y0 MOTOR COIL">( Y0 )</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sim-card-footer">
+                            <div class="plc-leds">
+                                <span class="led-item"><span class="led green on"></span> PWR</span>
+                                <span class="led-item"><span class="led green" id="ledRun"></span> RUN</span>
+                                <span class="led-item"><span class="led amber" id="ledX0"></span> X0</span>
+                                <span class="led-item"><span class="led green" id="ledY0"></span> Y0</span>
+                            </div>
+                            <span class="sim-hint">💡 Click buttons above to test ladder logic execution live!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== INTERACTIVE DEMO SIMULATOR SECTION ========== -->
+    <section id="simulator" class="section simulator-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Interactive Learning</span>
+                <h2 class="section-title">Experience <span class="text-accent">Real-Time Simulation</span></h2>
+                <p class="section-desc">Root Engineering Academy includes interactive software simulators so you can write, test, and debug ladder logic without needing expensive physical hardware upfront.</p>
+            </div>
+
+            <div class="sim-interactive-wrapper reveal">
+                <div class="sim-tabs-header">
+                    <button class="sim-tab-btn active" data-tab="tab-ladder">⚡ Ladder Logic Tester</button>
+                    <button class="sim-tab-btn" data-tab="tab-wiring">🔌 Terminal Wiring Diagram</button>
+                </div>
+
+                <div class="sim-tab-content active" id="tab-ladder">
+                    <div class="ladder-builder-card">
+                        <div class="ladder-toolbar">
+                            <span class="toolbar-title">Delta DVP-14SS2 Ladder Execution Environment</span>
+                            <div class="toolbar-actions">
+                                <button class="btn btn-sm btn-outline" id="resetSimBtn">Reset Logic</button>
+                                <span class="status-chip active">RUN MODE</span>
+                            </div>
+                        </div>
+                        <div class="ladder-diagram-canvas">
+                            <div class="power-rail left">L1 (24V)</div>
+                            <div class="rungs-container">
+                                <!-- Rung 1 -->
+                                <div class="rung-row">
+                                    <span class="rung-num">RUNG 0</span>
+                                    <div class="rung-elements">
+                                        <button class="ladder-element contact-btn" id="elementX0" data-type="no" data-state="off">
+                                            <span class="elem-name">START (X0)</span>
+                                            <span class="elem-symbol">┨ ┠</span>
+                                            <span class="elem-state">OFF</span>
+                                        </button>
+                                        <button class="ladder-element contact-btn" id="elementX1" data-type="nc" data-state="on">
+                                            <span class="elem-name">STOP (X1)</span>
+                                            <span class="elem-symbol">┨/┠</span>
+                                            <span class="elem-state">NC</span>
+                                        </button>
+                                        <div class="rung-connector" id="conn1"></div>
+                                        <div class="ladder-element coil-elem" id="elementY0" data-state="off">
+                                            <span class="elem-name">PUMP MOTOR (Y0)</span>
+                                            <span class="elem-symbol">( )</span>
+                                            <span class="elem-state">OFF</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Rung 2 -->
+                                <div class="rung-row">
+                                    <span class="rung-num">RUNG 1</span>
+                                    <div class="rung-elements">
+                                        <button class="ladder-element contact-btn" id="elementT0" data-type="no" data-state="off">
+                                            <span class="elem-name">TIMER T0 (5s)</span>
+                                            <span class="elem-symbol">┨ ┠</span>
+                                            <span class="elem-state">OFF</span>
+                                        </button>
+                                        <div class="rung-connector" id="conn2"></div>
+                                        <div class="ladder-element coil-elem" id="elementY1" data-state="off">
+                                            <span class="elem-name">VALVE SOLENOID (Y1)</span>
+                                            <span class="elem-symbol">( )</span>
+                                            <span class="elem-state">OFF</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="power-rail right">N (0V)</div>
+                        </div>
+                        <div class="ladder-explanation">
+                            <div class="exp-box">
+                                <h4>💡 How This Rung Works:</h4>
+                                <p id="ladderExpText">Click on <strong>START (X0)</strong> contact to energize Pump Motor <strong>(Y0)</strong>. Notice how holding contact (latch) keeps Y0 active even after releasing X0!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sim-tab-content" id="tab-wiring">
+                    <div class="wiring-diagram-card">
+                        <div class="wiring-grid">
+                            <div class="wiring-block">
+                                <h4>Power Supply Wiring (24V DC)</h4>
+                                <ul class="wiring-steps">
+                                    <li><span class="step-num">1</span> Connect AC L &amp; N (230V) to SMPS inputs.</li>
+                                    <li><span class="step-num">2</span> Run +24V DC wire to S/S terminal (Sink Mode configuration).</li>
+                                    <li><span class="step-num">3</span> Connect Push buttons between 0V DC and Input terminals (X0, X1).</li>
+                                </ul>
+                            </div>
+                            <div class="wiring-schematic">
+                                <div class="terminal-strip">
+                                    <div class="term-pin power">24V+</div>
+                                    <div class="term-pin power">0V-</div>
+                                    <div class="term-pin ss">S/S</div>
+                                    <div class="term-pin input active">X0 (Start)</div>
+                                    <div class="term-pin input">X1 (Stop)</div>
+                                    <div class="term-pin output active">Y0 (Relay)</div>
+                                    <div class="term-pin output">Y1 (Valve)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== COURSE OVERVIEW ========== -->
+    <section id="course" class="section course-overview">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Core Fundamentals</span>
+                <h2 class="section-title">Everything You Need to <span class="text-accent">Master Automation</span></h2>
+                <p class="section-desc">Comprehensive coverage of PLC architecture, HMI screen design, wiring, ladder logic, and industrial field telemetry.</p>
+            </div>
+            
+            <div class="course-live-classes-bar reveal">
+                <div class="live-bar-item pulse-highlight">
+                    <span class="live-bar-icon">🚀</span>
+                    <div class="live-bar-content">
+                        <strong>Next Live Batch Starts</strong>
+                        <span class="highlight-date-text">2nd August 2026 (Sunday)</span>
+                    </div>
+                </div>
+                <div class="live-bar-item">
+                    <span class="live-bar-icon">🕒</span>
+                    <div class="live-bar-content">
+                        <strong>Batch Timing</strong>
+                        <span>10:00 AM – 1:00 PM (IST)</span>
+                    </div>
+                </div>
+                <div class="live-bar-item">
+                    <span class="live-bar-icon">🎥</span>
+                    <div class="live-bar-content">
+                        <strong>Live Online Class</strong>
+                        <span>Interactive live lectures, reviews &amp; direct Q&amp;A.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card reveal" data-delay="0">
+                    <div class="overview-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="15" x2="22" y2="15"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="15" x2="4" y2="15"/></svg>
+                    </div>
+                    <h3>What is PLC</h3>
+                    <p>Programmable Logic Controllers automate manufacturing processes with ruggedized, deterministic real-time control logic.</p>
+                </div>
+                <div class="overview-card reveal" data-delay="50">
+                    <div class="overview-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3>What is HMI</h3>
+                    <p>Human Machine Interface touchscreens give operators live visual control, alarm banners, recipe handling, and real-time trend graphs.</p>
+                </div>
+                <div class="overview-card reveal" data-delay="100">
+                    <div class="overview-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <h3>PLC vs Relay Logic</h3>
+                    <p>Master how solid-state PLCs replace bulky hardwired relay logic panels with flexible, reprogrammable ladder software logic.</p>
+                </div>
+                <div class="overview-card reveal" data-delay="150">
+                    <div class="overview-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="12" x2="16" y2="12"/></svg>
+                    </div>
+                    <h3>Control Panel Wiring</h3>
+                    <p>Learn 24V DC Sink/Source wiring, interposing relays, optical isolation, surge suppressors, and earthing practices.</p>
+                </div>
+                <div class="overview-card reveal" data-delay="200">
+                    <div class="overview-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <h3>Digital Inputs &amp; Sensors</h3>
+                    <p>Connect PNP/NPN proximity sensors, photoelectric switches, limit switches, and encoders to PLC digital input cards.</p>
+                </div>
+                <div class="overview-card reveal" data-delay="250">
+                    <div class="overview-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="1"/><circle cx="8" cy="12" r="2"/><line x1="14" y1="9" x2="14" y2="15"/><line x1="18" y1="9" x2="18" y2="15"/></svg>
+                    </div>
+                    <h3>Digital Outputs</h3>
+                    <p>Safely actuate contactors, VFD start commands, solenoid valves, and indicator lamps using Transistor &amp; Relay output modules.</p>
+                </div>
+                <div class="overview-card reveal" data-delay="300">
+                    <div class="overview-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <h3>Analog Signals (4-20mA / 0-10V)</h3>
+                    <p>Process pressure transmitters, RTD temperature sensors, and level transducers using analog I/O scaling instructions.</p>
+                </div>
+                <div class="overview-card reveal" data-delay="350">
+                    <div class="overview-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3>Timers (TON, TOF, RTO)</h3>
+                    <p>Program precision delays for Star-Delta motor starters, sequential conveyor startup, and pulse generators.</p>
+                </div>
+                <div class="overview-card reveal" data-delay="400">
+                    <div class="overview-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="9" y1="9" x2="9" y2="15"/><line x1="15" y1="9" x2="15" y2="15"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+                    </div>
+                    <h3>Counters &amp; Encoders</h3>
+                    <p>Implement high-speed counters (HSC) for bottle counting, length measurement, and batch packaging automation.</p>
+                </div>
+                <div class="overview-card reveal" data-delay="450">
+                    <div class="overview-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Boolean Logic Gates</h3>
+                    <p>Translate complex logic diagrams (AND, OR, NOT, XOR, NAND) into clean ladder logic rungs without interlock glitches.</p>
+                </div>
+                <div class="overview-card reveal" data-delay="500">
+                    <div class="overview-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <h3>Delta PLC Software</h3>
+                    <p>Master WPLSoft &amp; ISPSoft for Delta DVP-14SS2 / DVP-20EX2 PLCs including simulation, online force, and EEPROM upload/download.</p>
+                </div>
+                <div class="overview-card reveal" data-delay="550">
+                    <div class="overview-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3>Delta HMI (Human Machine Interface)</h3>
+                    <p>Delta HMI (Human Machine Interface) enables intuitive machine monitoring and control with a user-friendly touchscreen interface. Improve operational efficiency through real-time visualization, faster diagnostics, and seamless integration with Delta automation systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== COURSE MODULES (SYLLABUS) ========== -->
+    <section id="syllabus" class="section modules-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Structured Syllabus</span>
+                <h2 class="section-title">Comprehensive <span class="text-accent">8-Module Curriculum</span></h2>
+                <p class="section-desc">Designed with industry experts to take you step-by-step from zero to advanced automation engineer.</p>
+            </div>
+
+            <!-- Module Filter Buttons -->
+            <div class="module-filters reveal">
+                <button class="filter-btn active" data-filter="all">All Modules (8)</button>
+                <button class="filter-btn" data-filter="basics">PLC Basics</button>
+                <button class="filter-btn" data-filter="delta">Delta PLC</button>
+                <button class="filter-btn" data-filter="hmi">HMI &amp; Modbus</button>
+            </div>
+
+            <div class="modules-list reveal">
+                <div class="module-item" data-category="basics">
+                    <button class="module-header" aria-expanded="true">
+                        <div class="module-number">01</div>
+                        <div class="module-info">
+                            <h3>PLC Architecture &amp; Fundamentals</h3>
+                            <p>Hardware layout, CPU execution scan cycle, memory registers &amp; IEC 61131-3 standards</p>
+                        </div>
+                        <svg class="module-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="module-body open">
+                        <ul>
+                            <li>Why PLCs replaced electromagnetic hardwired relay logic control panels</li>
+                            <li>Hardware breakdown: CPU, Power Supply, I/O rack modules, EEPROM backplane</li>
+                            <li>Understand PLC Scan Cycle: Input Read → Program Logic Exec → Output Write</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-item" data-category="basics">
+                    <button class="module-header" aria-expanded="false">
+                        <div class="module-number">02</div>
+                        <div class="module-info">
+                            <h3>Electrical Wiring &amp; Hardware Connections</h3>
+                            <p>Sink/Source wiring, power distribution, relays, terminal protection &amp; earthing</p>
+                        </div>
+                        <svg class="module-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="module-body">
+                        <ul>
+                            <li>24V DC Power supply wiring and sizing calculations</li>
+                            <li>Sink (NPN) vs Source (PNP) input card wiring logic explained</li>
+                            <li>Relay output vs Transistor (NPN/PNP) output load wiring</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-item" data-category="basics">
+                    <button class="module-header" aria-expanded="false">
+                        <div class="module-number">03</div>
+                        <div class="module-info">
+                            <h3>Digital &amp; Analog I/O Signal Processing</h3>
+                            <p>Field sensors, NO/NC logic, 4-20mA current loops &amp; voltage scaling</p>
+                        </div>
+                        <svg class="module-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="module-body">
+                        <ul>
+                            <li>Pushbuttons, E-stops, inductive proximity sensors, and limit switches</li>
+                            <li>Relays, contactors, solenoid valves, and indicator tower lights</li>
+                            <li>Normally Open (NO) and Normally Closed (NC) physical vs software contacts</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-item" data-category="delta">
+                    <button class="module-header" aria-expanded="false">
+                        <div class="module-number">04</div>
+                        <div class="module-info">
+                            <h3>Timers &amp; Counters Programming</h3>
+                            <p>TON, TOF, CTU, CTD, High-speed counters</p>
+                        </div>
+                        <svg class="module-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="module-body">
+                        <ul>
+                            <li>Timer ON Delay (TON) for delayed motor starting and debouncing</li>
+                            <li>Timer OFF Delay (TOF) for cooling fan over-run logic</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-item" data-category="delta">
+                    <button class="module-header" aria-expanded="false">
+                        <div class="module-number">05</div>
+                        <div class="module-info">
+                            <h3>Combinational Logic Gates &amp; Latch Circuits</h3>
+                            <p>AND, OR, NOT, XOR, NAND, NOR, Seal-in latching &amp; Set/Reset instructions</p>
+                        </div>
+                        <svg class="module-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="module-body">
+                        <ul>
+                            <li>Series contacts (AND logic) for safety interlocks</li>
+                            <li>Parallel contacts (OR logic) for multiple start stations</li>
+                            <li>Inverted contacts (NOT logic) for fault condition checks</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-item" data-category="delta">
+                    <button class="module-header" aria-expanded="false">
+                        <div class="module-number">06</div>
+                        <div class="module-info">
+                            <h3>Delta PLC Programming (WPLSoft &amp; ISPSoft)</h3>
+                            <p>Delta DVP series PLC configuration, registers, simulator &amp; debugging</p>
+                        </div>
+                        <svg class="module-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="module-body">
+                        <ul>
+                            <li>WPLSoft &amp; ISPSoft installation, driver setup (COMMGR / RS232 / USB)</li>
+                            <li>Delta memory mapping: X (Input), Y (Output), M (Auxiliary Relay), D (Data Register)</li>
+                            <li>Data movement (MOV), Arithmetic (ADD, SUB, MUL, DIV) and Comparison instructions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-item" data-category="hmi">
+                    <button class="module-header" aria-expanded="false">
+                        <div class="module-number">07</div>
+                        <div class="module-info">
+                            <h3>HMI Screen Design with DOPSoft</h3>
+                            <p>Graphic elements, push buttons, numeric entries, bar graphs, alarms &amp; recipes</p>
+                        </div>
+                        <svg class="module-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="module-body">
+                        <ul>
+                            <li>DOPSoft design workspace overview and Delta touchpanel screen setup</li>
+                            <li>Designing intuitive operator dashboards with custom SVG icons</li>
+                            <li>Momentary buttons, maintained switches, multi-state indicators</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-item" data-category="hmi">
+                    <button class="module-header" aria-expanded="false">
+                        <div class="module-number">08</div>
+                        <div class="module-info">
+                            <h3>PLC to HMI Communication (Modbus RTU)</h3>
+                            <p>RS-485 serial communication, Modbus function codes &amp; address mapping</p>
+                        </div>
+                        <svg class="module-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="module-body">
+                        <ul>
+                            <li>RS-485 differential signal pair wiring &amp; 120-ohm termination resistors</li>
+                            <li>Modbus RTU master/slave architecture and frame structure</li>
+                            <li>Mapping Delta PLC internal registers (M, D, T, C) to HMI element addresses</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CERTIFICATE SECTION ========== -->
+    <section id="certificate" class="section certificate-section">
+        <div class="container text-center">
+            <div class="section-header reveal">
+                <span class="section-tag">Recognized Credential</span>
+                <h2 class="section-title">Industry-Recognized <span class="text-accent">Certification</span></h2>
+                <p class="section-desc">Receive a professional course completion certificate from Root Engineering Academy after successfully completing your training.</p>
+            </div>
+
+            <div class="certificate-showcase reveal">
+                <div class="cert-card-frame">
+                    <img src="images/certificate.jpg" alt="Official Course Completion Certificate - Root Engineering Academy Automation System Engineering" loading="lazy" class="cert-showcase-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ========== SECURE PAYMENT / ENROLLMENT SECTION ========== -->
+    <section id="payment" class="section payment-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">100% Secure Payment</span>
+                <h2 class="section-title">Complete Your <span class="text-accent">Enrollment</span></h2>
+                <p class="section-desc">Choose any UPI app to make your payment securely.</p>
+            </div>
+
+            <div class="payment-card reveal">
+                <div class="payment-ribbon">🔥 LIMITED TIME OFFER • LIMITED SEATS</div>
+                
+                <div class="payment-header">
+                    <div class="payment-brand-badge">
+                        <picture>
+                            <source srcset="images/root-logo.webp" type="image/webp">
+                            <img src="images/root-logo.png" alt="Root Engineering Academy Logo" class="payment-logo-img">
+                        </picture>
+                    </div>
+                    <h3>Industrial Automation PLC &amp; HMI Master Course</h3>
+                    <div class="payment-pricing-meta">
+                        <div class="meta-item"><span>Course Fee:</span> <strong>₹199</strong> <span class="price-original-inline">(Original: ₹499)</span></div>
+                        <div class="meta-item"><span>Next Batch:</span> <strong class="badge-next-batch">🚀 2nd August 2026 (Sunday)</strong></div>
+                        <div class="meta-item"><span>Class Mode:</span> <strong class="badge-live-classes">🎥 Live Online Class</strong></div>
+                        <div class="meta-item"><span>Batch Timing:</span> <strong class="timing-highlight">🕒 10:00 AM – 1:00 PM (IST)</strong></div>
+                        <div class="meta-item"><span>Payment Method:</span> <strong class="badge-upi-chip">UPI (Instant Verification)</strong></div>
+                    </div>
+                    <div class="payment-urgency-badge" id="paymentUrgencyBadge">
+                        ⚡ <strong>Offer Ends:</strong> 1st August 2026, 3:00 PM IST <span class="limited-seats-chip">🔥 LIMITED SEATS</span>
+                    </div>
+                    <div class="offer-expired-alert" id="paymentExpiredAlert" style="display: none;">
+                        The Early Enrollment Offer has ended. Please contact us for upcoming batches.
+                    </div>
+                </div>
+                <div class="payment-overview-action text-center">
+                    <p class="overview-instructions-text">Please click the button below to display the official payment QR Code and UPI details. Complete your payment of <strong>₹199</strong>, then submit the confirmation details in the activation form below.</p>
+                    <button id="openQrBtn" class="btn btn-primary btn-lg btn-show-qr glow-btn" type="button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><rect x="7" y="7" width="3" height="3"/><rect x="14" y="7" width="3" height="3"/><rect x="7" y="14" width="3" height="3"/><path d="M14 14h3v3h-3z"/></svg>
+                        <span>Show Payment QR Code &amp; UPI Details</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PAYMENT CONFIRMATION FORM ========== -->
+    <section class="section form-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Step 2: Activation</span>
+                <h2 class="section-title">Payment <span class="text-accent">Confirmation Form</span></h2>
+                <p class="section-desc">Fill in your enrollment details below so we can activate your course access.</p>
+            </div>
+            <div class="form-card reveal">
+                <form id="paymentForm" novalidate>
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" placeholder="e.g. Rahul Sharma" required autocomplete="name">
+                        <span class="form-error" id="fullNameError"></span>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mobile">WhatsApp Mobile Number <span class="required">*</span></label>
+                            <input type="tel" id="mobile" name="mobile" placeholder="10-digit mobile number" required autocomplete="tel" pattern="[0-9]{10}">
+                            <span class="form-error" id="mobileError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="name@example.com" required autocomplete="email">
+                            <span class="form-error" id="emailError"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transactionId">UPI Transaction ID / UTR Number <span class="required">*</span></label>
+                        <input type="text" id="transactionId" name="transactionId" placeholder="12-digit UTR or Transaction Ref No." required>
+                        <span class="form-error" id="transactionIdError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="screenshot">Upload Payment Screenshot <span class="required">*</span></label>
+                        <div class="file-upload" id="fileUpload">
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <p><strong>Click to choose image</strong> or drag and drop here</p>
+                            <span>Supports PNG, JPG, JPEG (Max 5MB)</span>
+                            <input type="file" id="screenshot" name="screenshot" accept="image/png,image/jpeg" required hidden>
+                        </div>
+                        <div class="file-preview-box" id="filePreviewBox">
+                            <img id="filePreviewImg" src="" alt="Screenshot Preview">
+                            <span class="file-name" id="fileName"></span>
+                            <button type="button" class="remove-file-btn" id="removeFileBtn">✕ Remove</button>
+                        </div>
+                        <span class="form-error" id="screenshotError"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-submit glow-btn">
+                        <span>Submit Enrollment Confirmation</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
+                </form>
+                <div class="form-success" id="formSuccess">
+                    <div class="success-icon-wrap">
+                        <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3>Enrollment Received Successfully! 🎉</h3>
+                    <p>Thank you! Your payment details have been submitted to Root Engineering Academy. Our verification team will activate your student dashboard and send the WhatsApp link within 15-30 minutes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ SECTION ========== -->
+    <section id="faq" class="section faq-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Got Questions?</span>
+                <h2 class="section-title">Frequently Asked <span class="text-accent">Questions</span></h2>
+                <p class="section-desc">Search or click below to get instant answers about the course.</p>
+            </div>
+
+            <!-- FAQ Search Bar -->
+            <div class="faq-search-wrapper reveal">
+                <input type="text" id="faqSearchInput" placeholder="🔍 Search questions (e.g. software, certificate, placement)...">
+            </div>
+
+            <div class="faq-list reveal" id="faqList">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Do I need to buy physical PLC hardware to learn?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No! Root Engineering Academy provides complete Delta WPLSoft and DOPSoft software simulators free of charge. You can run, program, wire, and test all ladder rungs and HMI touchpanel screens directly on your laptop or PC.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How long do I have access to the course materials?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You get Lifetime Unlimited Access! You can watch the video lectures.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Is job placement support provided by Root Engineering Academy?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Root Engineering Academy provides Career &amp; Placement Assistance for eligible courses.</p>
+                        <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.88;">Placement assistance and eligibility may vary depending on the course, batch, candidate performance, attendance, and hiring requirements of participating employers. We encourage you to speak with our Academic Counsellor to understand the placement support available for your chosen program. Terms &amp; Conditions Apply.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can electrical/mechanical/mechatronics beginners join this course?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely! The course starts from absolute ground zero — explaining what a PLC is, relay logic, and 24V wiring. Whether you come from Electrical, Mechanical, Mechatronics, Electronics, or Instrumentation, you will easily follow along.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How do I receive my Certificate of Completion?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Upon completing the 8 modules and submitting your capstone project code, an official digital certificate from Root Engineering Academy with a verifiable QR code will be generated and sent directly to your email.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="logo footer-logo" aria-label="Root Engineering Academy Home">
+                        <picture>
+                            <source srcset="images/root-logo.webp" type="image/webp">
+                            <img src="images/root-logo.png" alt="Root Engineering Academy Logo" class="brand-logo-img footer-logo-img">
+                        </picture>
+                    </a>
+                    <p class="footer-desc">Root Engineering Academy — Industrial Automation PLC &amp; HMI Master Course. Empowering engineers with practical, industry-ready skills.</p>
+
+                </div>
+                <div class="footer-links-col">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#simulator">Live Simulator</a>
+                    <a href="#course">Overview</a>
+                    <a href="#syllabus">Syllabus</a>
+                    <a href="#payment">Enrollment</a>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Direct Support</h4>
+                    <a href="https://wa.me/919326415542" target="_blank" rel="noopener">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        WhatsApp: +91 9326415542
+                    </a>
+                    <a href="mailto:info@rootacademy.co.in">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        info@rootacademy.co.in
+                    </a>
+                    <a href="https://www.rootacademy.co.in" target="_blank" rel="noopener">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        www.rootacademy.co.in
+                    </a>
+                    <p class="footer-address">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        THANE WEST, MAHARASHTRA
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Root Engineering Academy. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a> • <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== FLOATING WHATSAPP BUTTON WITH POPOVER ========== -->
+    <div class="whatsapp-float-container" id="whatsappFloat">
+        <div class="whatsapp-popover" id="whatsappPopover">
+            <button class="popover-close" id="popoverClose">✕</button>
+            <div class="popover-avatar">💬</div>
+            <div class="popover-content">
+                <strong>Need help enrolling?</strong>
+                <p>Chat live with Root Engineering Academy Lead Trainer</p>
+            </div>
+        </div>
+        <a href="https://wa.me/919326415542?text=Hi!%20I%20want%20to%20enroll%20in%20Root%20Engineering%20Academy%20PLC%20%26%20HMI%20Master%20Course" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" class="whatsapp-float-btn">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span class="notification-badge">1</span>
+        </a>
+    </div>
+
+    <!-- ========== BACK TO TOP ========== -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- ========== MOBILE STICKY BOTTOM ENROLL BAR ========== -->
+    <div class="mobile-enroll-bar" id="mobileEnrollBar">
+        <div class="mobile-price">
+            <span class="old-price">₹499</span>
+            <span class="new-price">₹199</span>
+            <span class="mobile-urgency-subtext" id="mobileUrgencyText">⚡ Ends: 1st Aug • 🔥 Limited Seats</span>
+        </div>
+        <a href="#payment" class="btn btn-primary btn-sm mobile-enroll-btn glow-btn"><span>Enroll Now</span></a>
+    </div>
+
+    <!-- ========== QR CODE PAYMENT MODAL ========== -->
+    <div id="qrModal" class="qr-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle" style="display: none;">
+        <div class="qr-modal-container">
+            <button id="closeQrBtn" class="qr-modal-close" aria-label="Close Payment Modal">✕</button>
+            <h3 class="qr-modal-title" id="qrModalTitle">Root Engineering Academy UPI Payment</h3>
+            <div class="qr-modal-body">
+                <div class="payment-body-grid">
+                    <!-- QR Code Column -->
+                    <div class="payment-qr-col">
+                        <p class="qr-label">Scan to <strong>Pay ₹199</strong> using any UPI App</p>
+                        <div class="qr-wrapper">
+                            <img src="images/payment-qr.png" alt="Scan to Pay ₹199 - Root Engineering Academy UPI QR Code" loading="lazy" width="320" height="320" class="qr-img responsive-qr">
+                            <div class="qr-scan-line"></div>
+                        </div>
+                        <div class="qr-pay-amount-badge">Pay ₹199 via UPI</div>
+                        <a href="images/payment-qr.png" download="Root-Engineering-Academy-UPI-QR-199.png" class="btn btn-outline btn-download-qr">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download QR Image (PNG)
+                        </a>
+
+                        <!-- Contact Support Box below QR code -->
+                        <div class="payment-help-box">
+                            <h4>Need Help?</h4>
+                            <p>📞 Contact: <a href="tel:+919326415542">+91 9326415542</a></p>
+                            <p>✉️ Email: <a href="mailto:info@rootacademy.co.in">info@rootacademy.co.in</a></p>
+                            <p>🌐 Website: <a href="https://www.rootacademy.co.in" target="_blank" rel="noopener">www.rootacademy.co.in</a></p>
+                            <p>📍 Location: <strong>THANE WEST, MAHARASHTRA</strong></p>
+                        </div>
+                    </div>
+
+                    <!-- Payment Details & Instructions Column -->
+                    <div class="payment-details-col">
+                        <div class="upi-section">
+                            <p class="upi-label">Official Root Engineering Academy UPI ID:</p>
+                            <div class="upi-copy-row">
+                                <code class="upi-id" id="upiId">ROOTENGINEERINGACAD@SRCB</code>
+                                <button class="btn btn-copy" id="copyUpiBtn" aria-label="Copy UPI ID">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                    <span>Copy UPI ID</span>
+                                </button>
+                            </div>
+                            <div class="copy-toast" id="copyToast">✓ Copied!</div>
+                        </div>
+
+                        <div class="methods-label">Supported Apps &amp; Instant UPI Shortcuts:</div>
+                        <div class="methods-grid">
+                            <a href="upi://pay?pa=ROOTENGINEERINGACAD@SRCB&pn=Root%20Engineering%20Academy&am=199&cu=INR" class="method-chip gpay">Google Pay</a>
+                            <a href="upi://pay?pa=ROOTENGINEERINGACAD@SRCB&pn=Root%20Engineering%20Academy&am=199&cu=INR" class="method-chip phonepe">PhonePe</a>
+                            <a href="upi://pay?pa=ROOTENGINEERINGACAD@SRCB&pn=Root%20Engineering%20Academy&am=199&cu=INR" class="method-chip paytm">Paytm</a>
+                            <a href="upi://pay?pa=ROOTENGINEERINGACAD@SRCB&pn=Root%20Engineering%20Academy&am=199&cu=INR" class="method-chip bhim">BHIM &amp; All UPI Apps</a>
+                        </div>
+
+                        <!-- Step by step instructions -->
+                        <div class="payment-instructions">
+                            <h4>📋 Payment Instructions:</h4>
+                            <ol class="instructions-list">
+                                <li>Scan the QR Code using any UPI app.</li>
+                                <li>Pay ₹199.</li>
+                                <li>Take a screenshot of the successful payment.</li>
+                                <li>Upload the screenshot in the registration form below or send it via WhatsApp.</li>
+                                <li>Our team will verify your payment and activate your enrollment.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js?v=2.2"></script>
+</body>
+</html>
