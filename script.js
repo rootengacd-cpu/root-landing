@@ -462,9 +462,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* --------------------------------------------------------------------------
-       11. STICKY ENROLLMENT COUNTDOWN & OFFER DEADLINE (Target: 1st August 2026, 3:00 PM IST)
+       11. STICKY ENROLLMENT COUNTDOWN & OFFER DEADLINE (Target: 9th August 2026, 10:00 AM IST)
        -------------------------------------------------------------------------- */
-    const DEADLINE_TIMESTAMP = new Date('2026-08-01T15:00:00+05:30').getTime();
+    const DEADLINE_TIMESTAMP = new Date('2026-08-09T10:00:00+05:30').getTime();
 
     function updateCountdownTimer() {
         const now = new Date().getTime();
@@ -495,7 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (timerBoxes) timerBoxes.style.display = 'none';
             if (timerLabel) timerLabel.style.display = 'none';
             if (timerClosedText) {
-                timerClosedText.textContent = '⛔ Offer Expired';
+                timerClosedText.textContent = '⛔ Registration Closed';
                 timerClosedText.style.display = 'inline-block';
             }
 
@@ -508,25 +508,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.style.opacity = '0.55';
                 const span = btn.querySelector('span');
                 if (span) {
-                    span.textContent = 'Offer Expired';
+                    span.textContent = 'Registration Closed';
                 } else {
-                    btn.textContent = 'Offer Expired';
+                    btn.textContent = 'Registration Closed';
                 }
             });
 
             // Display exact requested message:
             if (paymentExpiredAlert) {
-                paymentExpiredAlert.textContent = 'The Early Enrollment Offer has ended. Please contact our Academic Counsellor for upcoming batches.';
+                paymentExpiredAlert.textContent = 'Registration for this batch has closed. Please contact our Academic Counsellor for upcoming batches.';
                 paymentExpiredAlert.style.display = 'block';
             }
 
             // Update urgency badges to closed message
             document.querySelectorAll('.hero-urgency-badge, .payment-urgency-badge').forEach(el => {
-                el.innerHTML = '⛔ <strong>Offer Expired:</strong> The Early Enrollment Offer has ended. Please contact our Academic Counsellor for upcoming batches.';
+                el.innerHTML = '⛔ <strong>Registration Closed:</strong> Registration for this batch has closed. Please contact our Academic Counsellor for upcoming batches.';
                 el.classList.add('closed');
             });
             const mobileUrgencyText = document.getElementById('mobileUrgencyText');
-            if (mobileUrgencyText) mobileUrgencyText.textContent = '⛔ Offer Expired';
+            if (mobileUrgencyText) mobileUrgencyText.textContent = '⛔ Registration Closed';
         }
     }
 
